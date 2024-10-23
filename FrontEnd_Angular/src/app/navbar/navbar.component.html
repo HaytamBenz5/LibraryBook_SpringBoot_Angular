@@ -1,0 +1,63 @@
+<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+    <div class="position-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': page === 1}" aria-current="page" href="/Home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                         [ngStyle]="{'stroke': page === 1 ? 'blue' : 'black'}" class="feather feather-home">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span class="ml-2 lin" style="color: black;">Accueil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': page === 2}" aria-current="page" href="/addbook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                         [ngStyle]="{'stroke': page === 2 ? 'blue' : 'black'}" class="feather feather-file">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <span class="ml-2 lin" style="color: black;">Ajouter Livre</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': page === 3}" aria-current="page" href="/room">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                         [ngStyle]="{'stroke': page === 3 ? 'blue' : 'black'}" class="feather feather-file">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <span class="ml-2 lin" style="color: black;">Rejoindre un Room</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': page === 4}" aria-current="page" href="/room">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                         [ngStyle]="{'stroke': page === 4 ? 'blue' : 'black'}" class="feather feather-file">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <span class="ml-2 lin" style="color: black;">Créer un Room</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{'active': page === 4}" aria-current="page" href="/room">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                         [ngStyle]="{'stroke': page === 4 ? 'blue' : 'black'}" class="feather feather-lock">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <span class="ml-2 lin" style="color: black;">Paramètres</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

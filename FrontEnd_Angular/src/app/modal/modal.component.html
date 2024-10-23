@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h5 class="modal-title">Modifier</h5>
+    <button type="button" class="btn-close" (click)="onClose()" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="book.title" name="title" required>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" id="author" class="form-control" [(ngModel)]="book.author" name="author" required>
+      </div>
+      <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" id="isbn" class="form-control" [(ngModel)]="book.isbn" name="isbn" required>
+      </div>
+      <div class="mb-3">
+        <label for="available" class="form-label">Available</label>
+        <select id="available" class="form-select" [(ngModel)]="book.available" name="available">
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onClose()">Fermer</button>
+    <button type="button" class="btn btn-success" (click)="onSave()">Enregistrer les modifications</button>
+  </div>
+  
