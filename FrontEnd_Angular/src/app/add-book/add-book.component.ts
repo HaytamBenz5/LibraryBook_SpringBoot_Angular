@@ -18,10 +18,24 @@ import { ModalComponent } from '../modal/modal.component'; // Adjust the path ba
 })
 export class AddBookComponent {
   BookAdded = false;
+  BookUploaded = false;
+  selectedFile: File | null = null; // Variable to hold the selected file
+
   fillAll = false;
   books: Book[] = []; // Assuming there's a books array to store added books
 
   constructor(private http: HttpClient) {} // Inject HttpClient
+
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      this.selectedFile = file; // Store the selected file
+      this.BookUploaded=true;
+    } else {
+      this.selectedFile = null; // Reset if the file is not a PDF
+    }
+  }
 
   addBook(form: NgForm) {
     // Check if the form is valid
@@ -31,7 +45,7 @@ export class AddBookComponent {
           title: form.value.titre,
           author: form.value.author,
           isbn: form.value.isbn,
-          available: form.value.available === 'true' // Convert string to boolean
+          available:  this.BookUploaded // Convert string to boolean
         };
         console.log('f',form.value.titre);
 
