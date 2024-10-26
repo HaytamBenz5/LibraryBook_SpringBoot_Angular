@@ -9,6 +9,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class BookController {
@@ -85,5 +97,36 @@ public class BookController {
 
         // If the book is not found, return a personalized error message
         return ResponseEntity.status(404).body("Book not found with ID: " + id);
+    }
+    
+    
+    @GetMapping("/viewPdf/{id}")
+    public ResponseEntity<Resource> viewPdf(@PathVariable("id") String id) {
+        // Define the path to the PDF file based on the ID
+    	String baseDir = System.getProperty("user.dir");
+        String filePath = baseDir + "/src/main/java/com/example/Lib/bookUpload/" + id + ".pdf";
+    	File pdfFile = new File(filePath);
+
+        // Check if the file exists
+        if (!pdfFile.exists()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+
+        try {
+            // Create a resource from the PDF file
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(pdfFile));
+
+            // Return the file with headers to suggest download in the browser
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + pdfFile.getName() + "\"")
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(resource);
+
+        } catch (IOException e) {
+            // Handle any file reading exceptions
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null);
+        }
     }
 }

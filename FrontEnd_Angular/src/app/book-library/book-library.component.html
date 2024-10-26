@@ -124,6 +124,18 @@
                                                        style="margin-left: 10px;">
                                                        Delete
                                                     </a>
+                                                    <a 
+                                                    (click)="book.available ? openPdf(book.id.toString()) : $event.preventDefault()" 
+                                                    [href]="book.available ? (apiUrl + '/viewPdf/' + book.id) : null" 
+                                                    [target]="book.available ? '_blank' : null" 
+                                                    class="btn btn-sm btn-danger" 
+                                                    style="margin-left: 10px; cursor: {{ book.available ? 'pointer' : 'not-allowed' }}; opacity: {{ book.available ? '1' : '0.6' }};"
+                                                    [attr.aria-disabled]="!book.available">
+                                                    Voir Book 
+                                                </a>
+                                                
+                                                
+                                                
                                                 </td>
                                             </tr>
                                         </tbody>

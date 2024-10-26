@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { BrowserModule } from '@angular/platform-browser';
 import { Book } from '../models/book.model'; // Import the new Book model
 import { ModalComponent } from '../modal/modal.component'; // Adjust the path based on your file structure
+import { environment } from '../../environments/environment'; // Adjust the path if needed
 
 @Component({
   selector: 'app-book-library',
@@ -16,7 +17,7 @@ import { ModalComponent } from '../modal/modal.component'; // Adjust the path ba
   styleUrls: ['./book-library.component.css']
 })
 export class BookLibraryComponent {
-
+  apiUrl = environment.apiUrl;
   showModal = false;
   books: Book[] = []; // Use the Book model instead of any[]
   selectedBook: Book = new Book(0, '', '', '', false);// Use Book model for selectedBook
@@ -63,6 +64,10 @@ export class BookLibraryComponent {
   ajouterLivre(){
 
   }
+
+  openPdf(bookId: string) {
+    window.open(`${this.apiUrl}/viewPdf/${bookId}`, '_blank');
+}
   // Modify a book by ID
   modifyBooks(id: number, title: string, author: string, isbn: string, available: boolean): void {
     const updatedBook: Book = { id, title, author, isbn, available }; // Create an updated book object
